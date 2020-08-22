@@ -1,0 +1,30 @@
+
+
+<h1>Bem vindo</h1>
+
+<div class="play-container">
+    <p>Você pressionou <button (click)="countClick()">isso</button> {{ clickCounter }} vezes. </p>
+</div>
+
+<div class="play-container" [class.ative]="clickCounter > 4 ">
+   <p>
+       <input type="text" [(ngModel)]="name">
+       <br>
+       <strong>Voçê disse: </strong> {{ name }}
+   </p>
+</div>
+
+<div class="play-container" [ngStyle]="{
+    'background-color': clickCounter > 4 ? 'blue' : 'lightgray',
+    'border': clickCounter > 4 ? '4px solid black' : 'none'
+}">
+
+   <ng-template [ngIf]="clickCounter > 4 " [ngIfElse]="none">
+        <div style="width:auto; background-color: brown; padding: 10px;color: honeydew;">Limite ultrapassado</div>
+   </ng-template>
+
+   
+   <ng-template #none>
+    <div style="width:auto; background-color: green; padding: 10px;color: honeydew;">Dentro do limite</div>
+</ng-template>
+ </div>
